@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Categorias {% endblock title %}
+
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static "img/blog-header.jpg" %}');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+
+    <h2>Categorías</h2>
+    <ol>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li>Categorías</li>
+    </ol>
+
+  </div>
+</div><!-- End Breadcrumbs -->
+
+{% if cats_noticia %}
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog">
+  <div class="container" data-aos="fade-up">
+
+    <div class="row g-5">
+  
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+  
+        <div class="row gy-5 posts-list">
+                
+        <!-- Inicio de noticia -->
+          {% for n in cats_noticia %}
+          <div class="col-lg-6">
+            <article class="d-flex flex-column">
+  
+              <div class="post-img"><img src="{{ n.imagen.url }}" alt="" class="img-fluid"></div>
+  
+              <h2 class="title">
+                <a href="{% url 'detalle-noticia' n.pk %}">{{ n.titulo }}</a>
+              </h2>
+  
+              <div class="meta-top">
+                <ul>
+                  <!-- <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li> -->
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="{% url 'detalle-noticia' n.pk %}">{{ n.fecha }}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-tag"></i> <a href="{% url 'detalle-noticia' n.pk %}">{{ n.categoria }}</time></a></li>
+                  <!-- <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li> -->
+                </ul>
+              </div>
+  
+              <div class="content">
+                <p>{{ n.texto|truncatewords:"30" }}</p>
+              </div>
+  
+              <div class="read-more mt-auto align-self-end">
+                <a href="{% url 'detalle-noticia' n.pk %}">Leer más<i class="bi bi-arrow-right"></i></a></br>
+                {% if perms.noticia.add_noticia %}
+                <a href="{% url 'editar_noticia' n.pk %}">Editar<i class="bi bi-arrow-right"></i></a></br>
+                <a href="{% url 'borrar_noticia' n.pk %}">Eliminar<i class="bi bi-arrow-right"></i></a></br>
+                {% endif %}
+              </div>
+  
+            </article>
+          </div>
+          {% endfor %}
+          <!-- Fin de noticia -->
+        </div>
+      </div>
+
+            
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+
+        <div class="sidebar ps-lg-4">
+          
+          <div class="sidebar-item search-form">
+            <h3 class="sidebar-title">Buscar</h3>
+            <form action="" class="mt-3">
+              <input type="text">
+              <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+          </div><!-- End sidebar search formn-->
+                           
+          <div class="sidebar-item categories">
+            <h3 class="sidebar-title">Categorías</h3>
+            <ul class="mt-3">            
+              {% for n in list_categ %}
+              <li><a href="#">{{ n }} <span>(Acá iría el total de la categoria)</span></a></li>
+              {% endfor %}              
+            </ul>
+          </div><!-- End sidebar categories-->
+          
+          <div class="sidebar-item recent-posts">
+            <h3 class="sidebar-title">Noticias recientes</h3>          
+            <div class="mt-3">
+              {% for n in object_list %}
+              <div class="post-item mt-3">
+                <img src="{{ n.imagen.url }}" alt="" class="flex-shrink-0">
+                <div>
+                  <h4><a href="{% url 'detalle-noticia' n.pk %}">{{ n.titulo }}</a></h4>
+                  <time datetime="2020-01-01">{{ n.publicado }}</time>
+                </div>
+              </div><!-- End recent post item-->
+              {% endfor %}
+            </div>
+          </div><!-- End sidebar recent posts-->
+          
+          <div class="sidebar-item tags">
+            <h3 class="sidebar-title">Etiquetas</h3>
+            <ul class="mt-3">
+              {% for n in categoria %}
+              <li><a href="#">{{ n.nombre }}</a></li>
+              {% endfor %}
+            </ul>
+          </div><!-- End sidebar tags-->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+{%else%}
+ NO EXISTE ESTA CATEGORIA!
+{%endif%}
+         
+   
+{% endblock content %}

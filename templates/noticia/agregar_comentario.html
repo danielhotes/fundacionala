@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Agregar comentario {% endblock title %} 
+
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static "img/blog-header.jpg" %}');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>Nuevo comentario</h2>
+    <ol>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li>Nuevo comentario</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+{% if user.is_authenticated %}
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h2>Agregar comentario</h2>
+              <hr>
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <hr>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-outline-success btn-lg">Comentar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+{% else %}
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+                <h2>Debe loguearse para poder realizar comentarios</h2>                      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endif %}
+
+{% endblock %}

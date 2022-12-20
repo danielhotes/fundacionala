@@ -1,0 +1,50 @@
+{% block sidebar %}
+
+<div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+
+    <div class="sidebar ps-lg-4">
+      
+      <div class="sidebar-item search-form">
+        <h3 class="sidebar-title">Buscar</h3>
+        <form action="" class="mt-3">
+          <input type="text">
+          <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </div><!-- End sidebar search formn-->
+                       
+      <div class="sidebar-item categories">
+        <h3 class="sidebar-title">Categorías</h3>
+        <ul class="mt-3">            
+          {% for n in list_categ %}
+          <li><a href="#">{{ n }} <span>(Acá iría el total de la categoria)</span></a></li>
+          {% endfor %}              
+        </ul>
+      </div><!-- End sidebar categories-->
+      
+      <div class="sidebar-item recent-posts">
+        <h3 class="sidebar-title">Noticias recientes</h3>          
+        <div class="mt-3">
+          {% for n in notidetail %}
+          <div class="post-item mt-3">
+            {% comment %} <img src="{{ n.imagen.url }}" alt="" class="flex-shrink-0"> {% endcomment %}
+            <div>
+              <h4><a href="detalle">{{ n.titulo }}</a></h4>
+              <time datetime="2020-01-01">{{ n.publicado }}</time>
+            </div>
+          </div><!-- End recent post item-->
+          {% endfor %}
+        </div>
+      </div><!-- End sidebar recent posts-->
+      
+      <div class="sidebar-item tags">
+        <h3 class="sidebar-title">Etiquetas</h3>
+        <ul class="mt-3">
+          {% for n in list_categ %}
+          <li><a href="#">{{ n }}</a></li>
+          {% endfor %}
+        </ul>
+      </div><!-- End sidebar tags-->
+    </div>
+  </div>
+
+{% endblock sidebar %}

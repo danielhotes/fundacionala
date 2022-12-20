@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ noticia.titulo }} {% endblock title %} 
+
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static "img/blog-header.jpg" %}');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>Nosotros</h2>
+    <ol>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li>Nosotros</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+{% endblock %}
