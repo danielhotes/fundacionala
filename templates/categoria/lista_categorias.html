@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Listado de categorías {% endblock title %} 
+
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static "img/blog-header.jpg" %}');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>Listado de categorías</h2>
+    <ol>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li>Listado de categorías</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<section id="contact" class="contact">
+    <div class="container">
+      <div class="row">
+          <div class="col-12 col-md-6 offset-md-3">
+              <div class="card">
+                  <div class="card-body">
+                      <h2>Categorías existentes</h2>
+                      <hr>
+                      <table class="table table-sm">
+                        <thead>
+                          <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Categoría</th>
+                            <th scope="col">Modificar</th>
+                            <th scope="col">Borrar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for cat in object_list %}
+                          <tr>
+                            <th scope="row">{{ cat.id }}</th>
+                            <td>{{ cat.nombre }}</td>
+                            <td><a href="{% url 'editar_categoria' cat.pk %}"><button class="btn btn-outline-success btn-sm">Editar</button></a></td>
+                            <td><a href="{% url 'borrar_categoria' cat.pk %}"><button class="btn btn-outline-danger btn-sm">Eliminar</button></a></td>
+                          </tr>
+                            {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                    </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}

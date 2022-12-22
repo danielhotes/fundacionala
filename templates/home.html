@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Inicio {% endblock title %} 
+{% block title %} Fundación Ala' {% endblock title %} 
 
 {% block content %}
 
@@ -10,14 +10,12 @@
         <div class="container">
           <div class="row">
             <div class="col-xl-4">
-              <h2 data-aos="fade-up">Manos Abiertas</h2>
+              <h2 data-aos="fade-up">Fundación Ala'</h2>
               <blockquote data-aos="fade-up" data-aos-delay="100">
-                <p>En Manos Abiertas acompañamos y asistimos a los más necesitados y vulnerables, fortaleciendo vínculos familiares y redes comunitarias.</p>
+                <p>Somos una organización comprometida en proveer educación de calidad, integrando las necesidades de los estudiantes, y la preservación de la cultura con el fin de mejorar, enriquecer y contribuir a mejorar la vida de los menos privilegiados.</p>
               </blockquote>
               <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                {% if user.is_authenticated %}
-
-                {% else %}
+                {% if not user.is_authenticated %}
                 <a href="{% url 'login' %}" class="btn-get-started">Ingresar</a>
                 {% endif %}
               </div>
@@ -27,70 +25,6 @@
         </div>
       </section><!-- End Hero Section -->
 
-          <!-- ======= Our Services Section ======= -->
-    <section id="services-list" class="services-list">
-        <div class="container" data-aos="fade-up">
-  
-          <div class="section-header">
-            <h2>Trabajamos en 6 dimensiones solidarias</h2>
-  
-          </div>
-  
-          <div class="row gy-5">
-  
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon flex-shrink-0"><i><img src="{% static 'img/hogares-100x100.png' %}"></i></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Hogares</a></h4>
-                <p class="description">de niños, adultos mayores y personas en situación de calle y desamparo</p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-  
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon flex-shrink-0"><i><img src="{% static 'img/salud-100x100.png' %}"></i></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Salud</a></h4>
-                <p class="description">cuidados paliativos a personas con enfermedades terminales en su fase final; servicios integrales de salud física y mental; acompañamiento a niños oncológicos en hospitales</p>
-              </div>
-            </div><!-- End Service Item -->
-  
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon flex-shrink-0"><i><img src="{% static 'img/educacion-100x100.png' %}"></i></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Educación</a></h4>
-                <p class="description">escuelas y actividades de apoyo escolar, becas, programas educativos, talleres de oficios y culturales</p>
-              </div>
-            </div><!-- End Service Item -->
-  
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon flex-shrink-0"><i><img src="{% static 'img/promsocial-100x100.png' %}"></i></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Promoción Social</a></h4>
-                <p class="description">acompañamiento y soporte a comunidades y familias marginadas por la desocupación, emigración o extrema pobreza</p>
-              </div>
-            </div><!-- End Service Item -->
-  
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-              <div class="icon flex-shrink-0"><i><img src="{% static 'img/soledad-100x100.png' %}"></i></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Soledad</a></h4>
-                <p class="description">visita y asistencia a personas que se encuentran solas en diferentes realidades: hospitales, cárceles, hogares</p>
-              </div>
-            </div><!-- End Service Item -->
-  
-            <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-              <div class="icon flex-shrink-0"><i><img src="{% static 'img/espiritualidad-100x100.png' %}"></i></div>
-              <div>
-                <h4 class="title"><a href="#" class="stretched-link">Espiritualidad</a></h4>
-                <p class="description">ejercicios espirituales gratuitos y espacios para la reflexión y convivencia</p>
-              </div>
-            </div><!-- End Service Item -->
-  
-          </div>
-  
-        </div>
-      </section><!-- End Our Services Section -->
 
       <!-- ======= Recent Blog Posts Section ======= -->
     <section id="recent-posts" class="recent-posts">
@@ -109,7 +43,7 @@
                 <div class="post-img"><img src="{{ n.imagen.url }}" class="img-fluid" alt=""></div>
                 <div class="meta">
                   <span class="post-date">{{ n.publicado }}</span>
-                  <span class="post-author"> / {{ n.autor }}</span>
+                  <span class="post-author"> / {{ n.categoria }}</span>
                 </div>
                 <h3 class="post-title">{{n.titulo}}</h3>
                 <p>{{ n.texto|truncatewords:"20" }}</p>

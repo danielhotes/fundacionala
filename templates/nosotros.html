@@ -1,19 +1,83 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} {{ noticia.titulo }} {% endblock title %} 
+{% block title %} Nosotros {% endblock title %} 
 
 {% block content %}
+<body>
+  <header>
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static 'img/chaco.jpg' %}');">
+        <div class="container position-relative d-flex flex-column align-items-center">
+  
+          <h2>Nosotros</h2>
+          <ol>
+            <li><a href="inicio">Inicio</a></li>
+            <li>Nosotros</li>
+          </ol>
+        </div>
+      </div><!-- End Breadcrumbs -->
+    </header>
+<section>
+      <div class="sol12" style="border-width:5px; border-color:#6495ED; border-style:solid;background-color:#9fc5e8; margin:30px; padding:30px; text-aling:justify;border-radius: 20px;box-shadow: 10px -8px #4169E1;">
+        <center><img src="{% static 'img/alasinfondo.jpg' %}" style=" width: 100px;
+        height: 100px;"></center>
+        <h1 border:10 px> <center><b> Fundación Ala'</b></center></h1>
+        <center><p style="font-style: italic;">"Semilla en idioma Qom"</p></center>
+          <article> 
+            <br>
+            <h2><b><center>Visión</center></b></h2>
+            <p style="text-align:justify;"> 
+              Convertirnos en una Fundación reconocida en la localidad, por el buen servicio de enseñanza que brindamos a los estudiantes. Promover el derecho de toda persona, en especial de la juventud, a disfrutar de una vida digna y plena en igualdad de oportunidades, partiendo del desarrollo sistémico de las capacidades propias y  colectivas como medio para transformar la sociedad y erradicar la pobreza.
+            </p> 
+              <br>
+              <h2><b><center>Misión</center></b></h2>
+            <p style="text-align:justify;"> 
+              Somos una organización comprometida en proveer educación de calidad, integrando las necesidades de los estudiantes, y la preservación de la cultura con el fin de mejorar, enriquecer y contribuir a mejorar la vida de los menos privilegiados.
+            </p> 
+            <br>
+          </article>
+        </div><hr><br/>
+        <center><div class="sol12" style="border-width:5px; border-color:#6495ED; background-color:#d9ead3; margin:5px; padding:40px; width: 300px;
+        height: 100px;border-radius: 20px;box-shadow: 10px -8px #9ACD32;"><h5> Nuestros objetivos</h5></center>
+        </div>
+        <div style="dislpay:grid; place-items:center;">
+        <div class="sol12" style="background-color:#d9ead3; margin:30px; padding:30px;border-radius: 20px;box-shadow: 10px -8px #9ACD32;">
+        <ul><a><b><img src="{% static 'img/alasinfondo.jpg' %}" style=" width: 30px;
+          height: 30px;"> Acompañar a jovenes y niños en situacion de vulnerabilidad.</b></a></ul>
+        <ul><a><b><img src="{% static 'img/alasinfondo.jpg' %}" style=" width: 30px;
+          height: 30px;"> Garantizar el acceso de los jovenes a la educacion elemental.</b></a></ul>
+        <ul><a><b><img src="{% static 'img/alasinfondo.jpg' %}" style=" width: 30px;
+          height: 30px;">Propiciar espacios para el desarrollo del proceso de enseñanza y aprendizaje.</b></a></ul>
+        <ul><a><b><img src="{% static 'img/alasinfondo.jpg' %}" style=" width: 30px;
+          height: 30px;"> Proteger y promover el conocimiento vinculado a los pueblos originarios.</b></a></ul>
+        </div></div><hr><br/>
+     
+        <h1><center><img src="{% static 'img/alasinfondo.jpg' %}" style=" width: 70px;
+          height: 70px;">Nuestro equipo<img src="{% static 'img/alasinfondo.jpg' %} " style=" width: 70px;
+        height: 70px;"></center></h1>
+        <div class="d-flex align-items-center justify-content-center" style="background-image: url('{% static 'img/pastel.jpg' %});">
+              <div class="cajita1" style="border-radius:20px; background-color:#48D1CC;width:300px;height:400px;text-align:center;float:left;margin:1px; padding:1 2 1 2px;"><br>
+                  <center><img src="{% static 'img/felicia.jpg' %}";alt= "200px"; width="200px"></center><br>
+                  <h2> <center>Felicia Gomez</center></h2>
+                  <h4><center>Fundadora y presidenta</center></h4>
+                  <h4><center>Docente Nivel Inicial</center></h4>
+              </div>
+              <div class="cajita2" style="border-radius:20px; background-color:#48D1CC;width:300px;height:400px;text-align:center;float:left;margin:1px; padding:1 2 1 2px;"><br>
+                <center><img src="{% static 'img/miguel.jpg' %}";alt= "200px"; width="200px"></center><br>
+                <h2> <center>Miguel Barrios</center></h2>
+                <h4><center>Secretario</center></h4>
+                <h4><center>Docente</center></h4>
+              </div>
+              <div class="cajita3" style="border-radius:20px; background-color:#48D1CC;width:300px;height:400px;text-align:center;float:left;margin:1px; padding:1 2 1 2px;"><br>
+                <center><img src="{% static 'img/lopez.jpg' %}";alt= "200px"; width="200px"></center><br>
+                <h2> <center>Andres Lopez</center></h2>
+                <h4><center>Coordinador</center></h4>
+                <h4><center>Abogado</center></h4>
+              </div>
+        </div>
+</section>
 
-<!-- ======= Breadcrumbs ======= -->
-<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static "img/blog-header.jpg" %}');">
-  <div class="container position-relative d-flex flex-column align-items-center">
-    <h2>Nosotros</h2>
-    <ol>
-      <li><a href="{% url 'home' %}">Inicio</a></li>
-      <li>Nosotros</li>
-    </ol>
-  </div>
-</div><!-- End Breadcrumbs -->
 
-{% endblock %}
+</body>
+{% endblock content %}

@@ -15,47 +15,45 @@
     </ol>
   </div>
 </div><!-- End Breadcrumbs -->
+
 {% if perms.categoria.add_categoria %}
-<section id="contact" class="contact">
+  <section id="contact" class="contact">
     <div class="container">
       <div class="row">
-          <div class="col-12 col-md-6 offset-md-3">
-              <div class="card">
-                  <div class="card-body">
-                      <h2>Agregar categoría</h2>
-                      <hr>
-                      <form action="" method="post" enctype="multipart/form-data">
-                          {% csrf_token %}
-                          {{ form | crispy }}
-                          <hr>
-                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-outline-success btn-lg">Agregar</button>
-                          </div>
-                      </form>
-                    </div>
-              </div>
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h2>Agregar categoría</h2>
+              <hr>
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <hr>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-outline-success btn-lg">Agregar</button>
+                </div>
+              </form>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </section>
-
-  
-  {% else %}
-<section id="contact" class="contact">
+ 
+{% else %}
+  <section id="contact" class="contact">
     <div class="container">
       <div class="row">
-          <div class="col-12 col-md-6 offset-md-3">
-              <div class="card">
-                  <div class="card-body">
-                      <h2>NO CUENTA CON LOS PERMISOS PARA ESTAR AQUÍ!</h2>
-                      
-                    </div>
-              </div>
+        <div class="col-12 col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h2>NO CUENTA CON LOS PERMISOS PARA ESTAR AQUÍ!</h2>
+            </div>
           </div>
+        </div>
       </div>
     </div>
   </section>
-
 
 {% endif %}
 

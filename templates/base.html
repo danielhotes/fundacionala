@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Favicons -->
-    <link href="{% static 'img/icono.png' %}" rel="icon">
+    <link href="{% static 'img/alasinfondo.jpg' %}" rel="icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Template Main CSS File -->
+    <link href="{% static 'css/main2.css' %}" rel="stylesheet">
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
 </head>
 
@@ -36,8 +37,7 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="{% url 'home' %}" class="logo d-flex align-items-center">
-            <img src="{% static 'img/logo.png' %}" alt="">
-            <!-- <h1 class="d-flex align-items-center">Manos Abiertas</h1> -->
+            <img src="{% static 'img/alasinfondo.jpg' %}" alt="">
         </a>
 
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -45,7 +45,7 @@
 
         <nav id="navbar" class="navbar">
             <ul>              
-              <li><a href="{% url 'home' %}" class="active">Inicio</a></li>
+              <li><a href="{% url 'home' %}">Inicio</a></li>
               <li><a href="{%url 'nosotros' %}">Nosotros</a></li>              
               <li><a href="{% url 'noticias' %}">Noticias</a></li>
               <li><a href="{% url 'contacto' %}">Contacto</a></li>
@@ -55,6 +55,8 @@
                   <li><a href="{% url 'agregar_noticia' %}">Agregar noticia</a></li>
                   <li><a href="{% url 'noticias' %}">Editar noticias</a></li>
                   <li><a href="{% url 'agregar_categoria' %}">Agregar categoría</a></li>
+                  <li><a href="{% url 'listado_categorias' %}">Editar categorías</a></li>
+                  <li><a href="{% url 'consultas' %}">Consultas recibidas</a></li>
                 </ul>
               </li> 
               {% endif %}
@@ -93,15 +95,12 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.html" class="logo d-flex align-items-center">
-              <span>Manos Abiertas</span>
+              <span>Fundación Ala'</span>
             </a>
             <p>Enterate más en nuestras redes sociales</p>
-            <div class="social-links d-flex  mt-3">
-              <a href="https://twitter.com/manosabiertasar" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
-              <a href="https://www.facebook.com/ManosAbiertasAR/" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-              <a href="http://www.instagram.com/manosabiertas" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-              <a href="https://www.linkedin.com/company/manos-abiertas/" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
-              <a href="https://www.youtube.com/channel/UClid9qzpiBlR0dWeNp2ByMg" class="youtube" target="_blank"><i class="bi bi-youtube"></i></a>
+            <div class="social-links d-flex  mt-3">              
+              <a href="#" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+              <a href="https://www.instagram.com/fundacion.ala/" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>              
             </div>
           </div>
 
@@ -112,12 +111,13 @@
           <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
             <h4>Contacto</h4>
             <p>
-              <h5>Sede Nacional</h5>
-              Paraguay 1606, piso 2 Dpto B <br>
-              CABA – Buenos Aires<br><br>
-              <strong>Teléfono:</strong> (011) 4371 5869<br>
-              <strong>WhatsApp:</strong> +54 9 11 6640 7627<br>
-              <strong>Email:</strong> nacional@manosabiertas.org.ar<br>
+              <h5>Sede</h5>
+              Fortín Loma Negra 236<br>
+              Primer Piso Dpto 7 - Palermo I <br>
+              Resistencia – Chaco<br><br>
+              <strong>Teléfono:</strong> (362) 400 2764<br>
+              <strong>WhatsApp:</strong> +54 9 362 400 2764<br>
+              <strong>Email:</strong> fundacion.ala.chaco@gmail.com<br>
             </p>
 
           </div>

@@ -1,16 +1,8 @@
 from django.shortcuts import render, redirect
-from django.views import generic
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
+from django.views.generic import ListView
 from .forms import FormContacto, CustomUserCreationForm
 from django.contrib.auth import authenticate, login
-
-# Create your views here.
-
-# class RegistroUsuarioView(generic.CreateView):
-#     form_class = UserCreationForm
-#     template_name = 'registration/registracion.html'
-#     success_url = reverse_lazy('login')
+from .models import Contacto
 
 def registro(request):
     data = {
@@ -31,7 +23,6 @@ def contacto(request):
     data = {
         'form': FormContacto()
     }
-
     if request.method == 'POST':
         formulario = FormContacto(data=request.POST)
         if formulario.is_valid():
@@ -39,5 +30,8 @@ def contacto(request):
             data['mensaje'] = 'Consulta enviada!'
         else:
             data['form'] = formulario
-
     return render(request, 'contacto.html', data)
+
+class ContactosView(ListView):
+    model = Contacto
+    template_name = 'consultas.html'

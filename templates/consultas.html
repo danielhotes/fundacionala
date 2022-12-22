@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Consultas recibidas {% endblock title %} 
+
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('{% static "img/blog-header.jpg" %}');">
+  <div class="container position-relative d-flex flex-column align-items-center">
+    <h2>Consultas recibidas</h2>
+    <ol>
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li>Consultas recibidas</li>
+    </ol>
+  </div>
+</div><!-- End Breadcrumbs -->
+
+<section id="contact" class="contact">
+    <div class="container">
+      <div class="row">
+          <div class="col-12 col-md-10 offset-md-1">
+              <div class="card">
+                  <div class="card-body">
+                      <h2>Consultas desde formulario</h2>
+                      <hr>
+                      <table class="table table-sm">
+                      
+                       
+                    {% for form in object_list %}
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Correo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">{{form.id}}</th>
+                                <td>{{form.nombre}}</td>
+                                <td>{{form.correo}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mensaje</th>
+                                <td class="table-success" colspan="2">{{form.mensaje}}</td>
+                            </tr>
+                            
+                        </tbody>
+
+                    {% endfor %}
+                      </table>
+                    </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}

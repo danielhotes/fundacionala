@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Noticia, Categoria, Comentario
-from .forms import NoticeForm, FormComentario, ComentarioForm
+from .forms import FormComentario
 from django.urls import reverse_lazy
-from django.contrib.auth.decorators import permission_required
-from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -16,37 +14,40 @@ class NoticeDetailView(DetailView):
     model = Noticia
     template_name = 'noticia/detallenoticias.html'
 
+def detalle_noticia(request,pk):
+    noticia_detail = Noticia.objects.filter(id=pk)
+    noticia = Noticia.objects.all()
+    lista_cats = Categoria.objects.all()
+    ctx = {
+        'noticia_detail':noticia_detail,
+        'noticia':noticia,
+        'lista_cats':lista_cats
+    }
+    return render(request, 'noticia/detallenoticias.html', ctx)
+
 class NoticiaView(ListView):
     model = Noticia
     template_name = 'noticia/listadonoticias.html'
 
-#@permission_required('noticia.add_noticia')
+def listar_noticias(request):    
+    noticia = Noticia.objects.all()
+    lista_cats = Categoria.objects.all()
+    ctx = {
+        'noticia':noticia,
+        'lista_cats':lista_cats
+    }
+    return render(request, 'noticia/listadonoticias.html', ctx)
+
 class CrearNoticiaView(CreateView):
     model = Noticia
     template_name = 'noticia/agregarnoticia.html'
     fields = '__all__'
 
-# def agregar_noticia(request):
-#     data = {
-#         'form': AgregarNoticiaForm()
-#     }
-
-#     if request.method == 'POST':
-#         formulario = AgregarNoticiaForm(data=request.POST, files=request.FILES)
-#         if formulario.is_valid():
-#             formulario.save()
-#             data['mensaje'] = 'Noticia creada!'
-#         else:
-#             data['form'] = formulario
-#     return render(request, 'agregarnoticia.html', data)
-
-#@permission_required('noticia.change_noticia')
 class EditNoticeView(UpdateView):
     model = Noticia
-    form_class = NoticeForm
     template_name = 'noticia/editarnoticia.html'
+    fields = '__all__'
 
-#@permission_required('noticia.delete_noticia')
 class DeleteNoticeView(DeleteView):
     model = Noticia
     template_name = 'noticia/borrarnoticia.html'
@@ -60,11 +61,12 @@ class CrearCategoriaView(CreateView):
 class EditCategoriaView(UpdateView):
     model = Categoria
     template_name = 'categoria/editar_categoria.html'
+    fields = '__all__'
 
 class DeleteCategoriaView(DeleteView):
     model = Categoria
     template_name = 'categoria/borrar_categoria.html'
-    success_url = reverse_lazy('noticias')
+    success_url = reverse_lazy('listado_categorias')
 
 def CategoriaView(request, cats):
     cats_noticia = Noticia.objects.filter(categoria=cats)
@@ -74,33 +76,12 @@ class CrearComentarioView(CreateView):
     model = Comentario
     form_class = FormComentario
     template_name = 'noticia/agregar_comentario.html'
-    #fields = '__all__'
     def form_valid(self, form):
         form.instance.autor_id = self.request.user.id
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
     success_url = reverse_lazy('noticias')
 
-# def Comentar(request):
-#     comentarios = Comentario.objects.all()
-#     usuario = request.user.id
-
-#     context={
-#         'comentarios' : comentarios,
-#         'usuario': usuario,
-#     }
-#     return render(request,'comentario/listadoComentario.html', context)
-
-
-# def agregarComentario(request):
-#     usuario = User.id
-#     form = ComentarioForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#         form = ComentarioForm()
-
-#     context={
-#         'form': form,
-#         'usuario': usuario,
-#     }
-#     return render(request,'noticia/agregar_comentario.html', context)
+class ListCatsView(ListView):
+    model = Categoria
+    template_name = 'categoria/lista_categorias.html'

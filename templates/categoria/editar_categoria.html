@@ -16,21 +16,22 @@
   </div>
 </div><!-- End Breadcrumbs -->
 
-{% if perms.categoria.add_categoria %}
+
+{% if perms.noticia.change_noticia %}
 <section id="contact" class="contact">
     <div class="container">
       <div class="row">
           <div class="col-12 col-md-6 offset-md-3">
               <div class="card">
                   <div class="card-body">
-                      <h2>Borrará la categoría {{ categoia.nombre }}</h2>
+                      <h2>Editar publicación</h2>
                       <hr>
                       <form action="" method="post" enctype="multipart/form-data">
                           {% csrf_token %}
-                          <h3>¿Está seguro de hacerlo?</h3>
+                          {{ form | crispy }}
                           <hr>
-                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-outline-danger btn-lg">Borrar</button>
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">                              
+                            <button type="submit" class="btn btn-outline-success btn-lg">Editar</button>
                           </div>
                       </form>
                     </div>
@@ -40,7 +41,7 @@
     </div>
   </section>
 
-  {% else %}
+{% else %}
 <section id="contact" class="contact">
     <div class="container">
       <div class="row">

@@ -3,9 +3,6 @@ from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
 # Create your models here.
 
 class Categoria(models.Model):
@@ -52,10 +49,3 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f'{self.post.titulo} - {self.autor} - {self.comentario}'
-
-# @receiver(post_save, sender=Comentario)
-# def set_autor_field(sender, instance, **kwargs):
-#     if kwargs.get('created'):
-#         sender.objects.filter(autor=instance.autor).update(autor=int(User.id))
-#         sender.objects.filter(post=instance.post).update(post=int(Noticia.id))
-
